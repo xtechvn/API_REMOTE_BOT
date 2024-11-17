@@ -466,11 +466,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\PROJECT\\PROJECT_API_REMOTE_BOT\\API_REMOTE_BOT\\API_REMOTE_BOT.csproj",
+      "projectUniqueName": "F:\\PROJECT\\PROJECT_API_REMOTE_BOT\\source_tree_git_api_remote\\API_REMOTE_BOT.csproj",
       "projectName": "API_REMOTE_BOT",
-      "projectPath": "F:\\PROJECT\\PROJECT_API_REMOTE_BOT\\API_REMOTE_BOT\\API_REMOTE_BOT.csproj",
+      "projectPath": "F:\\PROJECT\\PROJECT_API_REMOTE_BOT\\source_tree_git_api_remote\\API_REMOTE_BOT.csproj",
       "packagesPath": "C:\\Users\\cuong\\.nuget\\packages\\",
-      "outputPath": "F:\\PROJECT\\PROJECT_API_REMOTE_BOT\\API_REMOTE_BOT\\obj\\",
+      "outputPath": "F:\\PROJECT\\PROJECT_API_REMOTE_BOT\\source_tree_git_api_remote\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
