@@ -15,6 +15,7 @@ namespace API_REMOTE_BOT.Controllers
                 // Khởi chạy tiến trình job
                 ProcessStartInfo startInfo = new ProcessStartInfo(JobFilePath)
                 {
+                    Verb = "runas",
                     UseShellExecute = true
                 };
                 Process.Start(startInfo);
