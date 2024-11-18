@@ -12,14 +12,23 @@ namespace API_REMOTE_BOT.Controllers
             try
             {
 
-                // Khởi chạy tiến trình job
                 ProcessStartInfo startInfo = new ProcessStartInfo(JobFilePath)
                 {
-                    Verb = "runas",
-                    UseShellExecute = true,
-                    WorkingDirectory = Path.GetDirectoryName(JobFilePath) // Đặt thư mục làm việc
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    CreateNoWindow = true,
+                    WorkingDirectory = Path.GetDirectoryName(JobFilePath)
                 };
-                Process.Start(startInfo);
+
+                using (Process process = Process.Start(startInfo))
+                {
+                    string output = await process.StandardOutput.ReadToEndAsync();
+                    string error = await process.StandardError.ReadToEndAsync();
+                    System.IO.File.WriteAllText(@"C:\logs\job_output.log", output);
+                    System.IO.File.WriteAllText(@"C:\logs\job_error.log", error);
+                }
+
 
                 return Ok(new
                 {
