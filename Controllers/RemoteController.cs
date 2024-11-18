@@ -12,20 +12,18 @@ namespace API_REMOTE_BOT.Controllers
             try
             {
 
-                using (Process process = Process.Start(JobFilePath))
+                ProcessStartInfo startInfo = new ProcessStartInfo("schtasks")
                 {
-                    bool exited = process.WaitForExit(10000); // Chờ tối đa 10 giây
-                    if (!exited)
-                    {
-                        process.Kill(); // Dừng tiến trình nếu quá thời gian chờ
-                        throw new TimeoutException("Job took too long to start.");
-                    }
-
-                    string output = await process.StandardOutput.ReadToEndAsync();
-                    string error = await process.StandardError.ReadToEndAsync();
-                    System.IO.File.WriteAllText(@"C:\logs\job_output.log", output);
-                    System.IO.File.WriteAllText(@"C:\logs\job_error.log", error);
-                }
+                    Arguments = "/Run /TN \"APP_SEND_REVENUE_DAILY_ZALO\"",
+                    UseShellExecute = true,
+                    CreateNoWindow = true
+                };
+                Process.Start(startInfo);
+                return Ok(new
+                {
+                    status = 0,
+                    msg = "Task started successfully"
+                });
 
 
                 return Ok(new
