@@ -11,32 +11,19 @@ namespace API_REMOTE_BOT.Controllers
         {
             try
             {
-                var processInfo = new ProcessStartInfo
+
+                // Khởi chạy tiến trình job
+                ProcessStartInfo startInfo = new ProcessStartInfo(JobFilePath)
                 {
-                    FileName = JobFilePath,
-                    UseShellExecute = false,
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true
+                    UseShellExecute = true
                 };
+                Process.Start(startInfo);
 
-                using (var process = Process.Start(processInfo))
+                return Ok(new
                 {
-                    var output = process.StandardOutput.ReadToEnd();
-                    var error = process.StandardError.ReadToEnd();
-
-                    if (process.ExitCode != 0)
-                    {
-                        throw new Exception($"Process exited with code {process.ExitCode}. Error: {error}");
-                    }
-
-                    return Ok(new
-                    {
-                        status = 0,
-                        msg = "Start success"
-                    });
-                }
-
-
+                    status = 0,
+                    msg = "Start success"
+                });
             }
             catch (Exception ex)
             {
