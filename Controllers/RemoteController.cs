@@ -12,17 +12,15 @@ namespace API_REMOTE_BOT.Controllers
             try
             {
 
-                ProcessStartInfo startInfo = new ProcessStartInfo(JobFilePath)
+                using (Process process = Process.Start(JobFilePath))
                 {
-                    UseShellExecute = false,
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true,
-                    CreateNoWindow = true,
-                    WorkingDirectory = Path.GetDirectoryName(JobFilePath)
-                };
+                    bool exited = process.WaitForExit(10000); // Chờ tối đa 10 giây
+                    if (!exited)
+                    {
+                        process.Kill(); // Dừng tiến trình nếu quá thời gian chờ
+                        throw new TimeoutException("Job took too long to start.");
+                    }
 
-                using (Process process = Process.Start(startInfo))
-                {
                     string output = await process.StandardOutput.ReadToEndAsync();
                     string error = await process.StandardError.ReadToEndAsync();
                     System.IO.File.WriteAllText(@"C:\logs\job_output.log", output);
