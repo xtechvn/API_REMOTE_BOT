@@ -12,18 +12,14 @@ namespace API_REMOTE_BOT.Controllers
             try
             {
 
-                ProcessStartInfo startInfo = new ProcessStartInfo("schtasks")
+                ProcessStartInfo startInfo = new ProcessStartInfo(JobFilePath)
                 {
-                    Arguments = "/Run /TN \"APP_SEND_REVENUE_DAILY_ZALO\"",
                     UseShellExecute = true,
-                    CreateNoWindow = true
+                    CreateNoWindow = true,
+                    Verb = "runas", // Chạy với quyền admin
+                    WorkingDirectory = Path.GetDirectoryName(JobFilePath)
                 };
                 Process.Start(startInfo);
-                return Ok(new
-                {
-                    status = 0,
-                    msg = "Task started successfully"
-                });
 
 
                 return Ok(new
