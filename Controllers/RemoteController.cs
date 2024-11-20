@@ -12,12 +12,12 @@ namespace API_REMOTE_BOT.Controllers
             try
             {
 
-                ProcessStartInfo startInfo = new ProcessStartInfo("C:\\x_tech_project_cicd\\job\\consummer_sync_to_elasticsearch\\JobSyncStoreToElasticSearch.exe")
+                ProcessStartInfo startInfo = new ProcessStartInfo("C:/x_tech_project_cicd/job/consummer_sync_to_elasticsearch/JobSyncStoreToElasticSearch.exe")
                 {
                     UseShellExecute = true,
                     CreateNoWindow = true,
                     Verb = "runas", // Chạy với quyền admin
-                    WorkingDirectory = Path.GetDirectoryName("C:\\x_tech_project_cicd\\job\\consummer_sync_to_elasticsearch\\JobSyncStoreToElasticSearch.exe")
+                    WorkingDirectory = Path.GetDirectoryName("C:/x_tech_project_cicd/job/consummer_sync_to_elasticsearch/JobSyncStoreToElasticSearch.exe")
                 };
                 Process.Start(startInfo);
 
