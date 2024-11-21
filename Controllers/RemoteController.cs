@@ -29,7 +29,7 @@ namespace API_REMOTE_BOT.Controllers
                 return Ok(new
                 {
                     status = 0,
-                    msg = "Start success"
+                    msg = "Start success !"
                 });
             }
             catch (Exception ex)
