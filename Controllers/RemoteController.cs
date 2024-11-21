@@ -7,20 +7,24 @@ namespace API_REMOTE_BOT.Controllers
     public class RemoteController : ControllerBase
     {
         [HttpGet("start-job")]
-        public async Task<ActionResult> remoteStart(string JobFilePath)
+        public async Task<ActionResult> remoteStart(string job_name)
         {
             try
             {
+                // Đường dẫn đến lệnh schtasks để chạy tác vụ
+                string command = "schtasks";
+                string arguments = "/Run /TN \""+ job_name + "\""; // Tên tác vụ đã tạo trong Task Scheduler
 
-                ProcessStartInfo startInfo = new ProcessStartInfo("C:/x_tech_project_cicd/job/consummer_sync_to_elasticsearch/JobSyncStoreToElasticSearch.exe")
+                // Thiết lập ProcessStartInfo để chạy lệnh schtasks
+                ProcessStartInfo startInfo = new ProcessStartInfo(command)
                 {
-                    UseShellExecute = true,
-                    CreateNoWindow = true,
-                    Verb = "runas", // Chạy với quyền admin
-                    WorkingDirectory = Path.GetDirectoryName("C:/x_tech_project_cicd/job/consummer_sync_to_elasticsearch/JobSyncStoreToElasticSearch.exe")
+                    Arguments = arguments,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
                 };
-                Process.Start(startInfo);
 
+                // Khởi chạy tiến trình
+                Process.Start(startInfo);
 
                 return Ok(new
                 {
@@ -39,17 +43,26 @@ namespace API_REMOTE_BOT.Controllers
         }
 
         [HttpGet("stop-job")]
-        public async Task<ActionResult> remoteStop(string JobFilePath)
+        public async Task<ActionResult> remoteStop(string job_name)
         {
             try
             {
-                // Dừng tiến trình dựa trên tên của file exe
-                var processName = System.IO.Path.GetFileNameWithoutExtension(JobFilePath);
-                foreach (var process in Process.GetProcessesByName(processName))
+
+                // Đường dẫn đến lệnh schtasks để dừng tác vụ
+                string command = "schtasks";
+                string arguments = "/End  /TN \"" + job_name + "\""; // Tên tác vụ đã tạo trong Task Scheduler
+
+                // Thiết lập ProcessStartInfo để chạy lệnh schtasks
+                ProcessStartInfo startInfo = new ProcessStartInfo(command)
                 {
-                    process.Kill();
-                    process.WaitForExit(); // Đảm bảo tiến trình dừng hẳn trước khi tiếp tục
-                }
+                    Arguments = arguments,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                };
+
+                // Khởi chạy tiến trình
+                Process process = Process.Start(startInfo);
+                process.WaitForExit(); // Đợi tiến trình hoàn tất
 
                 return Ok(new
                 {

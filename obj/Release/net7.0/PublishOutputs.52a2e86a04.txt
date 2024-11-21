@@ -1,0 +1,12 @@
+F:\PROJECT\PROJECT_API_REMOTE_BOT\source_tree_git_api_remote\obj\Release\net7.0\PubTmp\Out\API_REMOTE_BOT.exe
+F:\PROJECT\PROJECT_API_REMOTE_BOT\source_tree_git_api_remote\obj\Release\net7.0\PubTmp\Out\appsettings.Development.json
+F:\PROJECT\PROJECT_API_REMOTE_BOT\source_tree_git_api_remote\obj\Release\net7.0\PubTmp\Out\appsettings.json
+F:\PROJECT\PROJECT_API_REMOTE_BOT\source_tree_git_api_remote\obj\Release\net7.0\PubTmp\Out\API_REMOTE_BOT.dll
+F:\PROJECT\PROJECT_API_REMOTE_BOT\source_tree_git_api_remote\obj\Release\net7.0\PubTmp\Out\API_REMOTE_BOT.deps.json
+F:\PROJECT\PROJECT_API_REMOTE_BOT\source_tree_git_api_remote\obj\Release\net7.0\PubTmp\Out\API_REMOTE_BOT.runtimeconfig.json
+F:\PROJECT\PROJECT_API_REMOTE_BOT\source_tree_git_api_remote\obj\Release\net7.0\PubTmp\Out\API_REMOTE_BOT.pdb
+F:\PROJECT\PROJECT_API_REMOTE_BOT\source_tree_git_api_remote\obj\Release\net7.0\PubTmp\Out\Microsoft.AspNetCore.OpenApi.dll
+F:\PROJECT\PROJECT_API_REMOTE_BOT\source_tree_git_api_remote\obj\Release\net7.0\PubTmp\Out\Microsoft.OpenApi.dll
+F:\PROJECT\PROJECT_API_REMOTE_BOT\source_tree_git_api_remote\obj\Release\net7.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
+F:\PROJECT\PROJECT_API_REMOTE_BOT\source_tree_git_api_remote\obj\Release\net7.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
+F:\PROJECT\PROJECT_API_REMOTE_BOT\source_tree_git_api_remote\obj\Release\net7.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll
